@@ -72,18 +72,20 @@ def send_mail_outlook(email_recipient, email_subject, email_content):
     return True
 
 def ask_instructions():
-    send_to = input(f"{bcolors.BOLD}Recipient's email address: {bcolors.ENDC}")
-    subject = input(f"{bcolors.BOLD}Subject of the email: {bcolors.ENDC}")
-    html_file = input(f"{bcolors.BOLD}HTML file with email content (e.g. test.html): {bcolors.ENDC}")
+    try:
+        send_to = input(f"{bcolors.HEADER}Recipient's email address: {bcolors.ENDC}")
+        subject = input(f"{bcolors.HEADER}Subject of the email: {bcolors.ENDC}")
 
-    with open(html_file, "r", encoding='utf-8') as f:
-        content = f.read()
+        with open("email.html", "r", encoding='utf-8') as f:
+            content = f.read()
 
-    instruction = input("Do you want to send your email by Outlook? (y/n) \n")
+        instruction = input(f"{bcolors.HEADER}Do you want to send your email by Outlook? (y/n) {bcolors.ENDC}\n")
 
-    if instruction == "y":
-        send_mail_outlook(send_to, subject, content)
-    else:
-        send_mail_gmail(send_to, subject, content)
+        if instruction == "y":
+            send_mail_outlook(send_to, subject, content)
+        else:
+            send_mail_gmail(send_to, subject, content)
+    except:
+        print(f"{bcolors.FAIL}There was an error sending your email.{bcolors.ENDC}")
 
 ask_instructions()
