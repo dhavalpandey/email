@@ -7,7 +7,7 @@ This is a service that allows you to send emails at pace! I have written this co
 Download the code via [GIT](https://git-scm.com/downloads)
 
 ```bash
-git install https://github.com/dhavalpandey/email.git
+git clone https://github.com/dhavalpandey/email.git
 ```
 
 You also need to install [Python](https://www.python.org/downloads/)
@@ -25,7 +25,7 @@ python --version
 cd . > .env
 ```
 
-2. Then, add in your credentials
+2. Then, add your credentials to the .env file
 
 ```.env
 OUTLOOK_EMAIL="email@outlook.com"
